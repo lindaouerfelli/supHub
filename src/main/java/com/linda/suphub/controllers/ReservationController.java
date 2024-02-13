@@ -2,6 +2,7 @@ package com.linda.suphub.controllers;
 
 import com.linda.suphub.dto.PostDto;
 import com.linda.suphub.dto.ReservationDto;
+import com.linda.suphub.models.User;
 import com.linda.suphub.services.PostService;
 import com.linda.suphub.services.ReservationService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,13 @@ public class ReservationController {
     @GetMapping("/{reservation-id}")
     public ResponseEntity<ReservationDto> findById(@PathVariable("reservation-id") Integer reservationDto) {
         return ResponseEntity.ok(service.findById(reservationDto));
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<ReservationDto>> getAllPostsByUser(@PathVariable ("userId") Integer userId) {
+        User user = new User();
+        user.setId(userId);
+        return ResponseEntity.ok(service.findAllByUser(user));
     }
 
     @DeleteMapping("/{reservation-id}")

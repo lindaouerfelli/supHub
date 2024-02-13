@@ -7,6 +7,7 @@ import com.linda.suphub.models.Reservation;
 import com.linda.suphub.models.ReservationStatus;
 import com.linda.suphub.models.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ReservationService extends AbstractService<ReservationDto>{
@@ -25,4 +26,7 @@ public interface ReservationService extends AbstractService<ReservationDto>{
     Optional<Reservation> findByPost (Post post); // pour voir les détails de réservation liée a un post
 
     Optional<Reservation> findByPostAndStatus(Post post, ReservationStatus status);*/
+
+    List<ReservationDto> findAllByUser (User user);
+
 }

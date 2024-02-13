@@ -11,6 +11,8 @@ import lombok.Setter;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,6 +24,9 @@ public class PostDto {
     private String itemDescription;
     private PostCategory itemCategory;
     private PostStatus status;
+    private LocalDate postDate;
+    private byte[] image;
+
 
 
     private Integer userId;
@@ -33,6 +38,8 @@ public class PostDto {
                 .itemDescription(post.getItemDescription())
                 .itemCategory(post.getItemCategory())
                 .status(post.getStatus())
+                .postDate(post.getPostDate())
+                .image(post.getImage())
                 .userId(post.getUser().getId())
                 .build();
     }
@@ -44,6 +51,8 @@ public class PostDto {
                 .itemDescription(post.getItemDescription())
                 .itemCategory(post.getItemCategory())
                 .status(post.getStatus())
+                .postDate(post.getPostDate())
+                .image(post.getImage())
                 .user(User.builder().id(post.getUserId()).build()).build();
     }
 

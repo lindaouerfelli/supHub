@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -19,11 +20,17 @@ public class Post extends AbstractEntity{
 
     private String itemDescription;
 
+    @Column(columnDefinition = "bytea")
+    private byte[] image;
+
     @Enumerated(EnumType.STRING)
     private PostStatus status;
 
     @Enumerated(EnumType.STRING)
     private PostCategory itemCategory;
+
+    @Column(updatable = false)
+    private LocalDate postDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

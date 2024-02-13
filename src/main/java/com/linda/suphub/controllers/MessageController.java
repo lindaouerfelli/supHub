@@ -33,6 +33,11 @@ public class MessageController {
         return ResponseEntity.ok(service.findById(messageDto));
     }
 
+    @GetMapping("/user/{user-id}")
+    public ResponseEntity<List<MessageDto>> findAllByUserId(@PathVariable("user-id") Integer userId) {
+        return ResponseEntity.ok(service.findAllByUserId(userId));
+    }
+
     @DeleteMapping("/{message-id}")
     public ResponseEntity<Void> delete(@PathVariable("message-id") Integer messageDto) {
         service.delete(messageDto);

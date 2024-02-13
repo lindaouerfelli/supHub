@@ -30,6 +30,4 @@ public class Message extends AbstractEntity{
 
     private LocalDateTime sentAt;
 
-
-
 }

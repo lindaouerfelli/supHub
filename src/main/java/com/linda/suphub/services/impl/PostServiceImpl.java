@@ -1,20 +1,21 @@
 package com.linda.suphub.services.impl;
 
 import com.linda.suphub.dto.PostDto;
-import com.linda.suphub.dto.UserDto;
 import com.linda.suphub.models.Post;
 import com.linda.suphub.models.PostCategory;
 import com.linda.suphub.models.PostStatus;
 import com.linda.suphub.models.User;
 import com.linda.suphub.repositories.PostRepository;
-import com.linda.suphub.repositories.UserRepository;
 import com.linda.suphub.services.PostService;
 import com.linda.suphub.validators.ObjectsValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,12 +26,38 @@ public class PostServiceImpl implements PostService {
     private final PostRepository repository;
     private final ObjectsValidator<PostDto> validator;
     @Override
-    public Integer save(PostDto dto)
+    @Transactional
+
+    public Integer save(MultipartFile image, PostDto dto)
     {
 
+        // Traiter le fichier image
+        byte[] imageBytes = null;
+        try {
+            imageBytes = image.getBytes();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer l'exception
+        }
+
+        // Définir l'image dans le PostDto
+        dto.setImage(imageBytes);
+
+        // Enregistrer le post
         validator.validate(dto);
         Post post = PostDto.toEntity(dto);
         return repository.save(post).getId();
+
+        //validator.validate(dto);
+        //Post post = PostDto.toEntity(dto);
+        //return repository.save(post).getId();
+
+    }
+
+
+    @Override
+    public Integer save(PostDto dto) {
+        return null;
     }
 
     @Override
@@ -74,4 +101,5 @@ public class PostServiceImpl implements PostService {
                 .map(PostDto::fromEntity)
                 .collect(Collectors.toList());
     }
+
 }

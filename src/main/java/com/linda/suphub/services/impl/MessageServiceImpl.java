@@ -47,6 +47,14 @@ public class MessageServiceImpl implements MessageService {
 
 
     }
+    @Override
+    public List<MessageDto> findAllByUserId(Integer userId) {
+        return repository.findAllBySender_IdOrReceiver_Id(userId, userId)
+                .stream()
+                .map(MessageDto::fromEntity)
+                .collect(Collectors.toList());
+    }
+
 }
 
 

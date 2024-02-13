@@ -52,36 +52,14 @@ public class ReservationServiceImpl implements ReservationService {
 
         repository.deleteById(id);
 
-
-    }
-
-    /*@Override
-    public Integer reserveArticle(Integer userId, Integer postId) {
-        return null;
     }
 
     @Override
-    public Integer confirmReservation(Integer reservationId) {
-        return null;
+    public List<ReservationDto> findAllByUser(User user) {
+        return repository.findAllByUser(user)
+                .stream()
+                .map(ReservationDto::fromEntity)
+                .collect(Collectors.toList());
     }
 
-    @Override
-    public Integer cancelReservation(Integer reservationId) {
-        return null;
-    }
-
-    @Override
-    public Optional<Reservation> findAllByUserAndStatus(User user, ReservationStatus status) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<Reservation> findByPost(Post post) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<Reservation> findByPostAndStatus(Post post, ReservationStatus status) {
-        return Optional.empty();
-    }*/
 }

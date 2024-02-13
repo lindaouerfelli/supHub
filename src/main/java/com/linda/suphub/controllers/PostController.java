@@ -10,6 +10,7 @@ import com.linda.suphub.services.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -21,9 +22,28 @@ public class PostController {
     private final PostService service;
 
     @PostMapping("/")
-    public ResponseEntity<Integer> save(@RequestBody PostDto postDto) {
+    public ResponseEntity<Integer> save(@RequestParam("image") MultipartFile image,
+                                        @RequestParam("itemName") String itemName,
+                                        @RequestParam("itemDescription") String itemDescription,
+                                        @RequestParam("itemCategory") PostCategory itemCategory,
+                                        @RequestParam("status") PostStatus status,
+                                        @RequestParam("userId") Integer userId)
+    {
+        PostDto postDto = PostDto.builder()
+                .itemName(itemName)
+                .itemDescription(itemDescription)
+                .itemCategory(itemCategory)
+                .status(status)
+                .userId(userId)
+                .build();
 
-        return ResponseEntity.ok(service.save(postDto));
+        // Appeler la méthode save du service pour enregistrer le post
+        //Integer postId = service.save(image, postDto);
+
+        // Retourner l'ID du post enregistré
+       /// return ResponseEntity.ok(postId);
+
+        return ResponseEntity.ok(service.save(image, postDto));
     }
 
     @GetMapping("/")
@@ -58,7 +78,5 @@ public class PostController {
         user.setId(userId);
         return ResponseEntity.ok(service.findAllByUser(user));
     }
-
-
 
 }

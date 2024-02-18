@@ -5,6 +5,7 @@ import com.linda.suphub.dto.ReservationDto;
 import com.linda.suphub.models.User;
 import com.linda.suphub.services.PostService;
 import com.linda.suphub.services.ReservationService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/reservations")
 @RequiredArgsConstructor
+@Tag(name = "reservations")
 public class ReservationController {
 
     private final ReservationService service;

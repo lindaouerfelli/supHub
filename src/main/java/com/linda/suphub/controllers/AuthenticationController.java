@@ -6,6 +6,7 @@ import com.linda.suphub.dto.AuthenticationResponse;
 import com.linda.suphub.dto.UserDto;
 import com.linda.suphub.services.UserService;
 //import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-//@Tag(name = "authentication")
+@Tag(name = "authentication")
 public class AuthenticationController {
 
     private final UserService userService;

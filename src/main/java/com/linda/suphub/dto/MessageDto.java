@@ -38,7 +38,7 @@ public class MessageDto {
         return Message.builder()
                 .id(messageDto.getId())
                 .content(messageDto.getContent())
-                .sentAt(messageDto.getSentAt())
+                .sentAt(LocalDateTime.now())
                 .sender(User.builder().id(messageDto.getSenderId()).build())
                 .receiver(User.builder().id(messageDto.getReceiverId()).build())
                 .build();

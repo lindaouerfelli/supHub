@@ -85,22 +85,22 @@ public class SecurityConfig {
 
                 )
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class); // ceci est le filtre pour filtrer les requetes entrantes et valider le jwt token et voir si luser est authentifié ou pas, et ke veux executer mon filtrte avant lauthentication
-        //.cors();
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class) // ceci est le filtre pour filtrer les requetes entrantes et valider le jwt token et voir si luser est authentifié ou pas, et ke veux executer mon filtrte avant lauthentication
+                .cors();
         return http.build();
     }
 
-    //@Bean
+
+    @Bean
     public CorsFilter corsFilter() {
-        /*final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://locahost:5300/node"));
         config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept", "Authorization"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        source.registerCorsConfiguration("/**", config);*/
-        //return new CorsFilter(source);
-        return null;
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
 
     @Bean //ceci est pour assurer lauthentification au niveau de mon authnticationcontroller

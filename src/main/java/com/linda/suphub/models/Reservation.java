@@ -18,8 +18,8 @@ public class Reservation extends AbstractEntity{
 
     private LocalDateTime reservationDate;
 
-    @Enumerated(EnumType.STRING)
-    private ReservationStatus status;
+    //@Enumerated(EnumType.STRING)
+    //private ReservationStatus status;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -5,5 +5,5 @@ import java.time.LocalDate;
 public interface PostSumDetails {
     LocalDate getPostDate();
 
-    Long getAmount();
+    Long getNombre();
 }

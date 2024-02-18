@@ -19,17 +19,20 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     private final PostRepository repository;
 
+
     @Override
-    public Long countPostsByUserIdd(Integer userId) {
-        return repository.countPostsByUserId(userId);
+    public Long countTotalPostss() {
+        return repository.countTotalPosts();
+    }
+
+    @Override
+    public List<PostSumDetails> countTotalPostsBetweenDatess(LocalDate startDate, LocalDate endDate) {
+
+       // LocalDateTime start = LocalDateTime.of(startDate, LocalTime.of(0, 0, 0));
+       // LocalDateTime end = LocalDateTime.of(endDate, LocalTime.of(23, 59, 59));
+
+        return repository.countTotalPostsBetweenDates(startDate, endDate);
     }
 
 
-    @Override
-    public List<PostSumDetails> countPostsByUserIdAndDateRangee( LocalDate startDate, LocalDate endDate,Integer userId)
-    {
-        LocalDateTime start = LocalDateTime.of(startDate, LocalTime.of(0, 0, 0));
-        LocalDateTime end = LocalDateTime.of(endDate, LocalTime.of(23, 59, 59));
-        return repository.countPostsByUserIdAndDateRange(userId, startDate, endDate);
-    }
 }

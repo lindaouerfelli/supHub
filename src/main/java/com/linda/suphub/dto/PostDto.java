@@ -27,8 +27,6 @@ public class PostDto {
     private LocalDate postDate;
     private byte[] image;
 
-
-
     private Integer userId;
 
     public static PostDto fromEntity(Post post) {
@@ -51,7 +49,7 @@ public class PostDto {
                 .itemDescription(post.getItemDescription())
                 .itemCategory(post.getItemCategory())
                 .status(post.getStatus())
-                .postDate(post.getPostDate())
+                .postDate(LocalDate.now())
                 .image(post.getImage())
                 .user(User.builder().id(post.getUserId()).build()).build();
     }

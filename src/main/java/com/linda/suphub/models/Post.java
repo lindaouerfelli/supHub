@@ -29,7 +29,6 @@ public class Post extends AbstractEntity{
     @Enumerated(EnumType.STRING)
     private PostCategory itemCategory;
 
-    @Column(updatable = false)
     private LocalDate postDate;
 
     @ManyToOne

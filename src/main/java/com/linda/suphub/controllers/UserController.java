@@ -2,6 +2,7 @@ package com.linda.suphub.controllers;
 
 import com.linda.suphub.dto.UserDto;
 import com.linda.suphub.services.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@Tag(name = "users")
 public class UserController {
 
 

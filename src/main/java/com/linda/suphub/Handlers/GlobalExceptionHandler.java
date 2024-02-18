@@ -10,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.authentication.BadCredentialsException;
 //import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -60,7 +62,7 @@ public class GlobalExceptionHandler {
                 .body(representation);
     }
 
-/*    @ExceptionHandler(DisabledException.class)
+   @ExceptionHandler(DisabledException.class)
     public ResponseEntity<ExceptionRepresentation> handleDisabledException() {
         ExceptionRepresentation representation = ExceptionRepresentation.builder()
                 .errorMsg("You cannot access your account because it is not yet activated")
@@ -78,7 +80,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.FORBIDDEN)
                 .body(representation);
-    }*/
+    }
 
 }
 

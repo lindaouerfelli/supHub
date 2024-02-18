@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface StatisticsService {
-    Long countPostsByUserIdd(Integer userId);
+    Long countTotalPostss();
 
-    List<PostSumDetails> countPostsByUserIdAndDateRangee( LocalDate startDate, LocalDate endDate,Integer userId);
+    List<PostSumDetails> countTotalPostsBetweenDatess(LocalDate startDate, LocalDate endDate);
 }

@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -21,7 +22,7 @@ public class ReservationDto {
 
     private Integer id;
     private LocalDateTime reservationDate;
-    private ReservationStatus status;
+   // private ReservationStatus status;
 
     private Integer userId;
     private Integer postId;
@@ -31,7 +32,7 @@ public class ReservationDto {
         return ReservationDto.builder()
                 .id(reservation.getId())
                 .reservationDate(reservation.getReservationDate())
-                .status(reservation.getStatus())
+               // .status(reservation.getStatus())
                 .userId(reservation.getUser().getId())
                 .postId(reservation.getPost().getId())
                 .build();
@@ -40,8 +41,8 @@ public class ReservationDto {
     public static Reservation toEntity(ReservationDto reservationDto) {
         return Reservation.builder()
                 .id(reservationDto.getId())
-                .reservationDate(reservationDto.getReservationDate())
-                .status(reservationDto.getStatus())
+                .reservationDate(LocalDateTime.now())
+               // .status(reservationDto.getStatus())
                 .user(User.builder().id(reservationDto.getUserId()).build())
                 .post(Post.builder().id(reservationDto.getPostId()).build())
                 .build();

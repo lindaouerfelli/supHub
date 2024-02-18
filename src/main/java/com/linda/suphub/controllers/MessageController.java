@@ -4,6 +4,7 @@ package com.linda.suphub.controllers;
 import com.linda.suphub.dto.MessageDto;
 import com.linda.suphub.dto.ReservationDto;
 import com.linda.suphub.services.MessageService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/messages")
 @RequiredArgsConstructor
+@Tag(name = "messages")
 public class MessageController {
 
         private final MessageService service;

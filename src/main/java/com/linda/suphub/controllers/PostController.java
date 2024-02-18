@@ -7,6 +7,7 @@ import com.linda.suphub.models.PostCategory;
 import com.linda.suphub.models.PostStatus;
 import com.linda.suphub.models.User;
 import com.linda.suphub.services.PostService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/posts")
 @RequiredArgsConstructor
+@Tag(name = "posts")
 public class PostController {
 
     private final PostService service;

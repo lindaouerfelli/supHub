@@ -30,9 +30,11 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Query("SELECT COUNT(p) FROM Post p WHERE p.user.id = :userId AND p.createdDate BETWEEN :startDate AND :endDate")
     Long countPostsByUserIdAndDateRange(@Param("userId") Integer userId, @Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
 
-    @Query("SELECT COUNT(p) FROM Post p WHERE p.user.id = :userId")
-    Long countPostsByUserId(@Param("userId") Integer userId);
+    @Query("SELECT COUNT(p) FROM Post p")
+    Long countTotalPosts();
 
-    @Query("SELECT p.postDate AS postDate, COUNT(p) AS amount FROM Post p WHERE p.user.id = :userId AND p.postDate BETWEEN :startDate AND :endDate GROUP BY p.postDate")
-    List<PostSumDetails> countPostsByUserIdAndDateRange(@Param("userId") Integer userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
+    @Query("SELECT p.postDate AS postDate, COUNT(p) AS nombre FROM Post p WHERE p.postDate BETWEEN :startDate AND :endDate GROUP BY p.postDate")
+    List<PostSumDetails> countTotalPostsBetweenDates(LocalDate startDate, LocalDate endDate);
+
 }

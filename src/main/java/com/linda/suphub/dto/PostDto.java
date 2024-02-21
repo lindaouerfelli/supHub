@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -25,6 +26,7 @@ public class PostDto {
     private PostCategory itemCategory;
     private PostStatus status;
     private LocalDate postDate;
+    //private MultipartFile image;
     private byte[] image;
 
     private Integer userId;

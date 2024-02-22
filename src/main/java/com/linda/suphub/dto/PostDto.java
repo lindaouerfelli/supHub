@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EnumType;
@@ -25,9 +26,12 @@ public class PostDto {
     private String itemDescription;
     private PostCategory itemCategory;
     private PostStatus status;
+    private String ownerFullName;
+
+    //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate postDate;
     //private MultipartFile image;
-    private byte[] image;
+    //private byte[] image;
 
     private Integer userId;
 
@@ -39,7 +43,7 @@ public class PostDto {
                 .itemCategory(post.getItemCategory())
                 .status(post.getStatus())
                 .postDate(post.getPostDate())
-                .image(post.getImage())
+                .ownerFullName(post.getOwnerFullName())
                 .userId(post.getUser().getId())
                 .build();
     }
@@ -52,7 +56,8 @@ public class PostDto {
                 .itemCategory(post.getItemCategory())
                 .status(post.getStatus())
                 .postDate(LocalDate.now())
-                .image(post.getImage())
+                .ownerFullName(post.getOwnerFullName())
+                //.image(post.getImage())
                 .user(User.builder().id(post.getUserId()).build()).build();
     }
 

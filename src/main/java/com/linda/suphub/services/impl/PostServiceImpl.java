@@ -25,39 +25,14 @@ public class PostServiceImpl implements PostService {
 
     private final PostRepository repository;
     private final ObjectsValidator<PostDto> validator;
-    @Override
-    @Transactional
-
-    public Integer save(MultipartFile image, PostDto dto)
-    {
-
-        // Traiter le fichier image
-        byte[] imageBytes = null;
-        try {
-            imageBytes = image.getBytes();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Gérer l'exception
-        }
-
-        // Définir l'image dans le PostDto
-        dto.setImage(imageBytes);
-
-        // Enregistrer le post
-        validator.validate(dto);
-        Post post = PostDto.toEntity(dto);
-        return repository.save(post).getId();
-
-        //validator.validate(dto);
-        //Post post = PostDto.toEntity(dto);
-        //return repository.save(post).getId();
-
-    }
 
 
     @Override
     public Integer save(PostDto dto) {
-        return null;
+        // Enregistrer le post
+        validator.validate(dto);
+        Post post = PostDto.toEntity(dto);
+        return repository.save(post).getId();
     }
 
     @Override

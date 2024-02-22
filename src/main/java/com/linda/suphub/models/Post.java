@@ -17,11 +17,12 @@ import java.time.LocalDate;
 public class Post extends AbstractEntity{
 
     private String itemName;
+    private String ownerFullName;
 
     private String itemDescription;
 
-    @Column(columnDefinition = "bytea")
-    private byte[] image;
+    //@Column(columnDefinition = "bytea")
+    //private byte[] image;
 
     @Enumerated(EnumType.STRING)
     private PostStatus status;

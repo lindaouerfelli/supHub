@@ -14,8 +14,7 @@ import java.util.List;
 
 public interface PostService extends AbstractService<PostDto> {
 
-    @Transactional
-    Integer save(MultipartFile image, PostDto dto);
+
 
     List<PostDto> findAllByItemCategory (PostCategory category);
 

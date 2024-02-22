@@ -26,6 +26,9 @@ public class Message extends AbstractEntity{
     @JoinColumn(name = "received_id")
     private User receiver;
 
+    private String senderName;
+    private String receiverName;
+
     private String content;
 
     private LocalDateTime sentAt;

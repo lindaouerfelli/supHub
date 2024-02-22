@@ -20,6 +20,8 @@ public class MessageDto {
     private Integer id;
     private String content;
     private LocalDateTime sentAt;
+    private String senderName;
+    private String receiverName;
 
     private Integer senderId;
     private Integer receiverId;
@@ -31,6 +33,8 @@ public class MessageDto {
                 .sentAt(message.getSentAt())
                 .senderId(message.getSender().getId())
                 .receiverId(message.getReceiver().getId())
+                .receiverName(message.getReceiverName())
+                .senderName(message.getSenderName())
                 .build();
     }
 
@@ -38,6 +42,8 @@ public class MessageDto {
         return Message.builder()
                 .id(messageDto.getId())
                 .content(messageDto.getContent())
+                .receiverName(messageDto.getReceiverName())
+                .senderName(messageDto.getSenderName())
                 .sentAt(LocalDateTime.now())
                 .sender(User.builder().id(messageDto.getSenderId()).build())
                 .receiver(User.builder().id(messageDto.getReceiverId()).build())

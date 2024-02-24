@@ -1,11 +1,9 @@
 package com.linda.suphub.services.impl;
 
+
 import com.linda.suphub.dto.PostDto;
 import com.linda.suphub.dto.ReservationDto;
-import com.linda.suphub.models.Post;
-import com.linda.suphub.models.Reservation;
-import com.linda.suphub.models.ReservationStatus;
-import com.linda.suphub.models.User;
+import com.linda.suphub.models.*;
 import com.linda.suphub.repositories.PostRepository;
 import com.linda.suphub.repositories.ReservationRepository;
 import com.linda.suphub.services.ReservationService;
@@ -25,6 +23,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     private final ReservationRepository repository;
     private final ObjectsValidator<ReservationDto> validator;
+    private final PostRepository postRepository;
     @Override
     public Integer save(ReservationDto dto) {
 
@@ -61,5 +60,6 @@ public class ReservationServiceImpl implements ReservationService {
                 .map(ReservationDto::fromEntity)
                 .collect(Collectors.toList());
     }
+
 
 }

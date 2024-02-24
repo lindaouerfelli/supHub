@@ -45,6 +45,12 @@ public class PostController {
         return ResponseEntity.accepted().build();
     }
 
+    @PutMapping("/{post-id}")
+    public ResponseEntity<Void> updatePostStatus(@PathVariable("post-id") Integer postId) {
+        service.updatePostStatus(postId);
+        return ResponseEntity.accepted().build();
+    }
+
     @GetMapping("/category/{category}")
     public ResponseEntity<List<PostDto>> getAllPostsByCategory(@PathVariable ("category") PostCategory category) {
         return ResponseEntity.ok(service.findAllByItemCategory(category));

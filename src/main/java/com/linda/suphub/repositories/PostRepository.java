@@ -6,8 +6,10 @@ import com.linda.suphub.models.PostCategory;
 import com.linda.suphub.models.PostStatus;
 import com.linda.suphub.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -37,4 +39,10 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Query("SELECT p.postDate AS postDate, COUNT(p) AS nombre FROM Post p WHERE p.postDate BETWEEN :startDate AND :endDate GROUP BY p.postDate")
     List<PostSumDetails> countTotalPostsBetweenDates(LocalDate startDate, LocalDate endDate);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE Post p SET p.status = 'RESERVED' WHERE p.id = ?1")
+    void updateStatusToReserved(Integer postId);
 }
+
+

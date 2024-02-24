@@ -54,6 +54,13 @@ public class PostServiceImpl implements PostService {
     {
         repository.deleteById(id);
     }
+
+    @Override
+    public void updatePostStatus(Integer postId) {
+        repository.updateStatusToReserved(postId);
+
+    }
+
     @Override
     public List<PostDto> findAllByItemCategory(PostCategory category) {
         return repository.findAllByItemCategory(category)

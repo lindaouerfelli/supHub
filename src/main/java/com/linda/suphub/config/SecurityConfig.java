@@ -82,7 +82,6 @@ public class SecurityConfig {
                             }
 
                         }
-
                 )
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class) // ceci est le filtre pour filtrer les requetes entrantes et valider le jwt token et voir si luser est authentifié ou pas, et ke veux executer mon filtrte avant lauthentication

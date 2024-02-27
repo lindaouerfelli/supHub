@@ -97,7 +97,8 @@ public class UserServiceImpl implements UserService {
 
         user.setActive(true);
         repository.save(user);
-        return user.getId();    }
+        return user.getId();
+    }
 
     @Override
     public Integer invalidateAccount(Integer id) {
@@ -117,10 +118,10 @@ public class UserServiceImpl implements UserService {
         User user = UserDto.toEntity(dto);
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
         user.setRole(findOrCreateRole(ROLE_USER));
 
         var savedUser = repository.save(user);
+
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", savedUser.getId());
         claims.put("fullName", savedUser.getFirstname() + " " + savedUser.getLastname());

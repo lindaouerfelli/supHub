@@ -62,6 +62,12 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public void available(Integer postId) {
+        repository.updateStatusToAvailable(postId);
+    }
+
+
+    @Override
     public List<PostDto> findAllByItemCategory(PostCategory category) {
         return repository.findAllByItemCategory(category)
                 .stream()

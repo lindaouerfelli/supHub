@@ -43,6 +43,11 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Transactional
     @Query("UPDATE Post p SET p.status = 'RESERVED' WHERE p.id = ?1")
     void updateStatusToReserved(Integer postId);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Post p SET p.status = 'AVAILABLE' WHERE p.id = ?1")
+    void updateStatusToAvailable(Integer postId);
 }
 
 

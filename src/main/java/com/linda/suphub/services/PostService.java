@@ -16,6 +16,8 @@ public interface PostService extends AbstractService<PostDto> {
 
 
     void updatePostStatus(Integer postId) ;
+    void available (Integer postId) ;
+
 
     List<PostDto> findAllByItemCategory (PostCategory category);
 

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 // la on a implémneté notre jwt filtre
-
+//Ce code représente un filtre d'authentification JWT (JSON Web Token) dans une application Spring Boot. Ce filtre est utilisé pour sécuriser les endpoints de votre application en vérifiant la présence et la validité des tokens JWT dans les requêtes entrantes.
 // des que luser envoie une requete la premiere contact ca sera avec le JwTAuthenticationFilter et il va jouer le role dunfiltre pour filtrer les infos ou les users
 // de facon global pour voir si cet user peut accéder a notre api ou non !
 @Component
@@ -29,8 +29,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter { // unfiltre 
     private static final String AUTHORIZATION = "Authorization";
     private static final String BEARER = "Bearer ";
 
-
-    // cette methode va faire le necessaire pour filtrer toute requete entrante anotre systeme !
+    //JWT filter
+    // cette methode va faire le necessaire pour filtrer toute requete entrante a notre systeme !
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException
     { // cette methode va filtrer totue requete entrante a notre systeme

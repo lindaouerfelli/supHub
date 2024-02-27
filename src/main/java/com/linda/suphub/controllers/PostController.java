@@ -45,9 +45,15 @@ public class PostController {
         return ResponseEntity.accepted().build();
     }
 
-    @PutMapping("/{post-id}")
+    @PutMapping("/reserved/{post-id}")
     public ResponseEntity<Void> updatePostStatus(@PathVariable("post-id") Integer postId) {
         service.updatePostStatus(postId);
+        return ResponseEntity.accepted().build();
+    }
+
+    @PutMapping("/available/{post-id}")
+    public ResponseEntity<Void> available(@PathVariable("post-id") Integer postId) {
+        service.available(postId);
         return ResponseEntity.accepted().build();
     }
 

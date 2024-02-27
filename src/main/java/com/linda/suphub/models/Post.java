@@ -36,9 +36,8 @@ public class Post extends AbstractEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
+    @OneToOne(mappedBy = "post", cascade = CascadeType.REMOVE)
     private Reservation reservation;
-
 
 
 }

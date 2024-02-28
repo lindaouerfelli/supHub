@@ -13,12 +13,13 @@ import java.util.Optional;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
 
+    //getReservationByPostId()
 
-   /* Optional<Reservation> findAllByUserAndStatus(User user, ReservationStatus status);
+    //Optional<Reservation> findByPost (Post post); // pour voir les détails de réservation liée a un post
 
-    Optional<Reservation> findByPost (Post post); // pour voir les détails de réservation liée a un post
 
-    Optional<Reservation> findByPostAndStatus(Post post, ReservationStatus status);*/
+    @Query("SELECT r FROM Reservation r WHERE r.post.id = :postId")
+    Optional<Reservation> getReservationByPostId(@Param("postId") int postId);
 
     @Query("SELECT p FROM Reservation p WHERE p.user = :user")
     List<Reservation> findAllByUser (@Param("user") User user);

@@ -48,9 +48,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void delete(Integer id) {
-
         repository.deleteById(id);
-
     }
 
     @Override
@@ -61,5 +59,14 @@ public class ReservationServiceImpl implements ReservationService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public ReservationDto getReservationByPostId(Integer id) {
+        return repository.getReservationByPostId(id)
+                .map(ReservationDto::fromEntity)
+                .orElseThrow(() -> new EntityNotFoundException("No post was found with the ID: " + id));
+
+    }
 
 }
+
+

@@ -39,5 +39,4 @@ public class Post extends AbstractEntity{
     @OneToOne(mappedBy = "post", cascade = CascadeType.REMOVE)
     private Reservation reservation;
 
-
 }

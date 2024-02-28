@@ -51,4 +51,13 @@ public class ReservationController {
         return ResponseEntity.accepted().build();
     }
 
+
+    @GetMapping("/post/{post-id}")
+    public ResponseEntity<ReservationDto> getReservationByPostId(@PathVariable("post-id") Integer postId) {
+        return ResponseEntity.ok(service.getReservationByPostId(postId));
+    }
+
+
+
+
 }

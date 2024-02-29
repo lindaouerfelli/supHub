@@ -51,5 +51,11 @@ public class UserController {
         return ResponseEntity.accepted().build();
     }
 
+    @PutMapping("/{user-id}")
+    public ResponseEntity<UserDto> updateUserProfile(@PathVariable("user-id") Integer userId, @RequestBody UserDto updatedUserDto) {
+        UserDto updatedUser = service.updateUserProfile(userId, updatedUserDto);
+        return ResponseEntity.ok(updatedUser);
+    }
+
 
 }

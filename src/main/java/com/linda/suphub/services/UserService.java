@@ -17,4 +17,7 @@ public interface UserService extends AbstractService<UserDto> {
     AuthenticationResponse register(UserDto user);
 
     AuthenticationResponse authenticate(AuthenticationRequest request);
+
+    UserDto updateUserProfile(Integer userId, UserDto updatedUserDto);
+
 }

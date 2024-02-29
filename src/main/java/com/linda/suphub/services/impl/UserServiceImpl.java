@@ -52,6 +52,23 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
 
     @Override
+    public UserDto updateUserProfile(Integer userId, UserDto updatedUserDto) {
+        User existingUser = repository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userId));
+
+        // Mettre à jour les informations de l'utilisateur avec les nouvelles données
+        existingUser.setFirstname(updatedUserDto.getFirstname());
+        existingUser.setLastname(updatedUserDto.getLastname());
+        existingUser.setEmail(updatedUserDto.getEmail());
+
+        // Sauvegarder les modifications dans la base de données
+        User updatedUser = repository.save(existingUser);
+
+        return UserDto.fromEntity(updatedUser);
+    }
+
+
+    @Override
     public Integer save(UserDto dto) {
 
         validator.validate(dto);
@@ -112,7 +129,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public AuthenticationResponse register(UserDto dto) {
         validator.validate(dto);
         User user = UserDto.toEntity(dto);

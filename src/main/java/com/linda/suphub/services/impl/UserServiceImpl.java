@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 
     private final JwtUtils jwtUtils;
     private  final AuthenticationManager authManager;
-    private static final String ROLE_USER = "ROLE_ADMIN";
+    private static final String ROLE_USER = "ROLE_USER";
     private final RoleRepository roleRepository;
 
     @Override

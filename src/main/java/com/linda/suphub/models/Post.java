@@ -21,6 +21,11 @@ public class Post extends AbstractEntity{
 
     private String itemDescription;
 
+/*
+    @Lob
+    @Column(columnDefinition = "bytea")
+    private byte[] image;*/
+
     //@Column(columnDefinition = "bytea")
     //private byte[] image;
 
